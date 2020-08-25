@@ -1,0 +1,79 @@
+body { 
+display:flex;
+justify-content: center;
+}
+
+.App-header .hero_box {
+  margin: 0 auto;
+  margin-top: 100px;  
+}
+
+
+
+.hero_box {
+  border-style: solid;
+  border-width: 1px;
+  border-color: lightblue;
+  width: 300px;
+  height: 300px;
+  margin-top: 100px;
+ 
+
+}
+
+.title {
+  font-size: 50px;
+  color: white;
+  font-family: cursive;
+  margin-top: 0;
+}
+
+.title_time{
+  color: white;
+  font-family: cursive;
+}
+.title_sub {
+  font-size: 30px;
+  text-align: center;
+  margin-top: 60px;
+}
+
+.title_section {
+  border-style: solid; 
+  border-width: 1px;
+  width: 346px;
+  height: 200px;
+  background-image: url("./Images/1.jpg");
+  background-size: contain;
+  
+}
+
+.App-header .input {
+  display: flex;
+  justify-content: center;
+}
+
+.input .input_box {
+  margin-top: 5px;
+  height: 100px
+}
+
+.App-header .input .submit{
+  display: flex;
+  margin: 0 auto;
+  margin-top: 5px;
+
+}
+.input .name {
+  margin-top: 10px;
+}
+
+.topbar {
+  background-color: lightblue;
+  width: 100%;
+}
+
+.topbar .icon_two {
+position: relative;
+left: 300px;
+}
