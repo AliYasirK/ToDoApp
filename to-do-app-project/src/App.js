@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Todo from './components/Todo.js';
-
+import Clock from './components/Clock.js';
 function App() {
   return (
     <div className="App">
@@ -11,9 +11,10 @@ function App() {
      <div className="image"><img src="https://img.icons8.com/metro/26/000000/menu.png"/></div> 
       <img class="icon_two" src="https://img.icons8.com/material-sharp/24/000000/menu-2.png"/>
       </div>
+      <Clock/>
     </div>
 
-
+    
     <div style={styles.title_section}>
       <h1 style={styles.title}>ToDo App</h1>
       <h3 style={styles.title_time}>3:53pm<br/> 8/25/2020 </h3>
@@ -93,6 +94,8 @@ const todoList = [
   description: "Remember to bake a cake for Jenny's birthday tomorrow afternoon.",
   completed: false},
   
+
+  {newToDoItem: ""},
   
 
 ];
@@ -126,10 +129,10 @@ const styles = {
     borderWidth: "1px",
     width: "100%",
     height: "100%",
-    backgroundImage: "url(https://lh3.googleusercontent.com/proxy/0WRjc5PN6GdYN7RWs9a6CYhADDEl4fuoDoN88HG6tpxdVZpXqAnlCe5xK-SKVxFLvZXnQvFcvkalbJCIZMqpJYf2QNleeH7lSoTXiDzje5l9f_wf3c_49vJ6kXrmKOX_yRymaL6WXtR2fnrqK6HeL4ZSO51aGRFJAoa2ZMQHA-uWWRkww1bA)",
+    backgroundImage: "url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQqWXLn4Mz62m77aysQGhXdnb2uanFN3kDqCQ&usqp=CAU)",
     backgroundSize: "contain",
     
-  },
+  },  
   
   input: {
     display: "flex",
@@ -147,6 +150,8 @@ const styles = {
     marginTop:"5px",
   
   },
+
+  
   name: {
     margintop: "10px",
   },
@@ -163,6 +168,7 @@ const styles = {
     
     width: "150px",
     margin:" 0 auto",
+    backgroundColor: "white",
    
   },
   
@@ -177,6 +183,7 @@ const styles = {
   name:{
     display:"flex",
     justifyContent: "center",
+    color: "white",
   },
   
   hero_box: {
@@ -185,6 +192,7 @@ const styles = {
     borderColor: "lightblue",
     width: "100%",
     height: "100%", 
+    backgroundColor: "lightBlue",
    
   }
 

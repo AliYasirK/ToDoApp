@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "yo";
+  src: url("https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300&display=swap")
+}
+
 body { 
 display:flex;
 justify-content: center;
@@ -7,8 +12,15 @@ justify-content: center;
   margin: 0 auto;
 }
 
+body {
+  background-image: url("https://i.pinimg.com/originals/b0/ff/1a/b0ff1a3520386aacce5cbad2986edc89.jpg");
+  background-size: 100%;
+}
 
 
+.background {
+text-align: center
+;}
 
 
 
