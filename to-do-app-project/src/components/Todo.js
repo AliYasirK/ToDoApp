@@ -1,14 +1,19 @@
 import React from 'react';
+import './Todo.css';
 
 class Todo extends React.Component {
-
     render(){ 
-        return  <li>
-                <p>{this.props.id}</p>
-                <p>{this.props.title}</p>
-                <p>{this.props.description}</p>
-                <input type="checkbox" checked={this.props.completed}></input>
-                </li>;
+        return  (
+            <div>
+                <li>
+                    
+                    <h3>{this.props.title}</h3>
+                    <p>{this.props.description}</p>
+                    <input type="checkbox" checked={this.props.completed} onClick={() => this.props.handleCheckbox(this.props.id)}/>
+                    <button onClick={() => this.props.handleDelete(this.props.id)}>Delete</button>
+                </li>
+            </div>
+        );
     }
  }
 

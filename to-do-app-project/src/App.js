@@ -1,203 +1,180 @@
-import React from 'react';
-import './App.css';
-import Todo from './components/Todo.js';
-import Clock from './components/Clock.js';
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-    <div style={styles.topbar}>
-      <div class="icons">
-     <div className="image"><img src="https://img.icons8.com/metro/26/000000/menu.png"/></div> 
-      <img class="icon_two" src="https://img.icons8.com/material-sharp/24/000000/menu-2.png"/>
-      </div>
-      <Clock/>
-    </div>
+import React, { Component } from "react";
+import "./App.css";
+import Todo from "./components/Todo.js";
+import Clock from "./components/Clock.js";
+// import Dashboard from './components/Dashboard';
 
-    
-    <div style={styles.title_section}>
-      <h1 style={styles.title}>ToDo App</h1>
-      <h3 style={styles.title_time}>3:53pm<br/> 8/25/2020 </h3>
-      
-      </div>
-    <div className="user_parent">
-      <div style={styles.avatar_parent}>
-        {user.map(user=>{
-          return(
-            <img style={styles.avatar} src={user.avatar}></img>
-          )
-        })}
-      </div>
-      <div>
-        {user.map(user=>{
-          return(
-          <p style={styles.name}>{user.name}</p>
-          )
-        })}
-      </div>
-      <h2 style={styles.title_sub}>Add Notes</h2>
+class App extends Component {
+  constructor(props) {
+    super(props);
 
+    this.state = {
+      toDoList: [
+        {
+          id: 1,
+          title: "Add a title",
+          description: "your description",
+          completed: true,
+        },
+        {
+          id: 2,
+          title: "Item title",
+          description: "your description",
+          completed: false,
+        },
+      ],
+      newItemName: "",
+      newItemDescription: "",
+    };
 
-      </div>
-      <div style={styles.hero_box}>
-        
-        <ul class="hero_list">
-          {todoList.map(listItem=> {
-              return (<Todo id={listItem.id} title={listItem.title} description={listItem.description} completed={listItem.completed}></Todo>);
-            
-          })}
-        </ul>
-      </div>
-
-      <div style={styles.input}>
-          <form>
-            <label for="name"></label>
-            <input style={styles} type="name" placeholder="title"></input> <br></br>
-
-            <label for="text"></label>
-            <input style={styles.input_box} type="text" placeholder="Type your description here"></input> <br></br>
-
-            <label for="submit"></label>
-            <input style={styles.submit} type="submit"></input>
-          </form>
-      </div>
-
-
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >        </a>
-      </header>
-    </div>
-  );
-}
-
-const todoList = [
-
-  {id: 1,
-  title: "add a title",
-  description: "your description",
-  completed: false,},
-
-  
-  {id: 2,
-  title: "Item title",
-  description: "your description",
-  completed: false,},
-  
-
-  
-  {id: 1,
-  title: "Bake a cake",
-  description: "Remember to bake a cake for Jenny's birthday tomorrow afternoon.",
-  completed: false},
-  
-
-  {newToDoItem: ""},
-  
-
-];
-
-const user = [{
-  name: "Add name",
-  avatar: "https://i.pinimg.com/originals/0c/3b/3a/0c3b3adb1a7530892e55ef36d3be6cb8.png",
-}]
-
-const styles = {
-  title: {
-    fontSize: "50px",
-    color: "white",
-    fontFamily: "cursive",
-    marginTop: "0",
-
-  },
-
-  title_time: {
-    color: "white",
-    fontFamily: "cursive",
-  },
-
-  title_sub: {
-    fontsize: "30px",
-    textalign: "center",
-  },
-  
-  title_section: {
-    borderStyle: "solid",
-    borderWidth: "1px",
-    width: "100%",
-    height: "100%",
-    backgroundImage: "url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQqWXLn4Mz62m77aysQGhXdnb2uanFN3kDqCQ&usqp=CAU)",
-    backgroundSize: "contain",
-    
-  },  
-  
-  input: {
-    display: "flex",
-    justifyContent: "center",
-  },
-  
-  input_box: {
-    marginTop: "5px",
-    height: "100px",
-  },
-  
-  submit:{
-    display: "flex",
-    margin: "0 auto",
-    marginTop:"5px",
-  
-  },
-
-  
-  name: {
-    margintop: "10px",
-  },
-  
-  topbar: {
-    backgroundColor: "lightblue",
-
-    display: "flex"
-  
-  },
-  
-  
-  avatar:{
-    
-    width: "150px",
-    margin:" 0 auto",
-    backgroundColor: "white",
-   
-  },
-  
-  avatar_parent:{
-    display:"flex",
-  justifyContent: "center",
-    
-  },
-  
-  
-  
-  name:{
-    display:"flex",
-    justifyContent: "center",
-    color: "white",
-  },
-  
-  hero_box: {
-    borderStyle: "solid",
-    borderWidth: "1px",
-    borderColor: "lightblue",
-    width: "100%",
-    height: "100%", 
-    backgroundColor: "lightBlue",
-   
+    this.addListItem = this.addListItem.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleCheckbox = this.handleCheckbox.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
+  handleInputChange(event) {
+    if (event.target.name === "title") {
+      this.setState({
+        newItemName: event.target.value,
+      });
+    } else {
+      this.setState({
+        newItemDescription: event.target.value,
+      });
+    }
+  }
+
+  addListItem() {
+    let newListItem = {
+      id: this.state.toDoList.length + 1,
+      title: this.state.newItemName,
+      description: this.state.newItemDescription,
+      completed: false,
+    };
+
+    console.log(newListItem);
+    const newToDoList = [...this.state.toDoList, newListItem];
+
+    this.setState({
+      toDoList: newToDoList,
+    });
+  }
+
+  handleCheckbox(id) {
+    var stateList = this.state.toDoList;
+    stateList[id - 1].completed = !stateList[id - 1].completed;
+    this.setState({
+      toDoList: stateList,
+    });
+  }
+
+  handleDelete(id) {
+    // Grab the list
+    // remove specified item from list
+    // set lest in state to the new list
+
+    var stateList = this.state.toDoList;
+    stateList = stateList.filter((item) => item.id !== id);
+
+    this.setState({
+      toDoList: stateList,
+    });
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <header className="App-header">
+          <div className="topbar">
+            <div className="icons">
+              <div className="image">
+                <img
+                  src="https://img.icons8.com/metro/26/000000/menu.png"
+                  alt=""
+                />
+              </div>
+              <img
+                className="icon_two"
+                src="https://img.icons8.com/material-sharp/24/000000/menu-2.png"
+                alt=""
+              />
+            </div>
+            <Clock />
+          </div>
+
+          <div className="title_section">
+            <h1 className="title">ToDo App</h1>
+            <h3 className="title_time">
+              3:53pm
+              <br /> 8/25/2020{" "}
+            </h3>
+          </div>
+
+          <div className="user_parent">
+            <div className="avatar_parent">
+              {user.map((user) => {
+                return <img className="avatar" src={user.avatar} alt=""></img>;
+              })}
+            </div>
+            <div>
+              {user.map((user) => {
+                return <p className="name">{user.name}</p>;
+              })}
+            </div>
+            <h2 className="title_sub">Add Notes</h2>
+          </div>
+
+          <div className="hero_box">
+            <ul className="hero_list">
+              {this.state.toDoList.map((listItem) => {
+                return (
+                  <Todo
+                    id={listItem.id}
+                    title={listItem.title}
+                    description={listItem.description}
+                    completed={listItem.completed}
+                    handleCheckbox={this.handleCheckbox}
+                    handleDelete={this.handleDelete}
+                  ></Todo>
+                );
+              })}
+            </ul>
+          </div>
+
+          <div className="input">
+            <form>
+              <label>
+                Item Name:
+                <input
+                  type="text"
+                  name="title"
+                  onChange={this.handleInputChange}
+                />
+              </label>
+              <label>
+                Description:
+                <input
+                  type="text"
+                  name="description"
+                  onChange={this.handleInputChange}
+                />
+              </label>
+            </form>
+            <button onClick={this.addListItem}>Add Item </button>
+          </div>
+        </header>
+      </div>
+    );
+  }
 }
 
-
+const user = [
+  {
+    name: "Add name",
+    avatar:
+      "https://i.pinimg.com/originals/0c/3b/3a/0c3b3adb1a7530892e55ef36d3be6cb8.png",
+  },
+];
 
 export default App;
