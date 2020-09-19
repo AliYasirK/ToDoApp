@@ -3,12 +3,17 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { BrowserRouter } from "react-router-dom";
+import Dashboard from './components/Dashboard';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
-  {/* <Dashboard/> */}
+    <BrowserRouter>
+        <App />
+      {/* <Dashboard /> */}
+    </BrowserRouter>
   </React.StrictMode>,
+  
   document.getElementById('root')
 );
 

@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import "./App.css";
 import Todo from "./components/Todo.js";
 import Clock from "./components/Clock.js";
+import Dashboard from "./components/Dashboard.js";
+import { Switch, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
+
 // import Dashboard from './components/Dashboard';
 
 class App extends Component {
@@ -85,85 +89,78 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <div className="topbar">
-            <div className="icons">
-              <div className="image">
-                <img
-                  src="https://img.icons8.com/metro/26/000000/menu.png"
-                  alt=""
-                />
-              </div>
-              <img
-                className="icon_two"
-                src="https://img.icons8.com/material-sharp/24/000000/menu-2.png"
-                alt=""
-              />
-            </div>
-            <Clock />
-          </div>
-
+        <nav className="App-header">
+          <h1 className="title">ToDo App</h1>
           <div className="title_section">
-            <h1 className="title">ToDo App</h1>
-            <h3 className="title_time">
-              3:53pm
-              <br /> 8/25/2020{" "}
-            </h3>
-          </div>
-
-          <div className="user_parent">
+            <Link className="link" to="/todos">
+              ToDo List
+            </Link>
+            <Link className="link" to="/">
+              Home Page
+            </Link>
             <div className="avatar_parent">
               {user.map((user) => {
                 return <img className="avatar" src={user.avatar} alt=""></img>;
               })}
-            </div>
-            <div>
+             
+            
               {user.map((user) => {
                 return <p className="name">{user.name}</p>;
               })}
             </div>
-            <h2 className="title_sub">Add Notes</h2>
           </div>
+        </nav>
 
-          <div className="hero_box">
-            <ul className="hero_list">
-              {this.state.toDoList.map((listItem) => {
-                return (
-                  <Todo
-                    id={listItem.id}
-                    title={listItem.title}
-                    description={listItem.description}
-                    completed={listItem.completed}
-                    handleCheckbox={this.handleCheckbox}
-                    handleDelete={this.handleDelete}
-                  ></Todo>
-                );
-              })}
-            </ul>
-          </div>
+        <div className="topbar">
+          <Switch>
+            <Route exact path="/">
+              <Clock />
+              
+            </Route>
+            <Route path="/todos">
+              <h2 className="title_sub">Add Notes</h2>
 
-          <div className="input">
-            <form>
-              <label>
-                Item Name:
-                <input
-                  type="text"
-                  name="title"
-                  onChange={this.handleInputChange}
-                />
-              </label>
-              <label>
-                Description:
-                <input
-                  type="text"
-                  name="description"
-                  onChange={this.handleInputChange}
-                />
-              </label>
-            </form>
-            <button onClick={this.addListItem}>Add Item </button>
-          </div>
-        </header>
+              <div className="hero_box">
+                <ul className="hero_list">
+                  {this.state.toDoList.map((listItem) => {
+                    return (
+                      <Todo
+                        id={listItem.id}
+                        title={listItem.title}
+                        description={listItem.description}
+                        completed={listItem.completed}
+                        handleCheckbox={this.handleCheckbox}
+                        handleDelete={this.handleDelete}
+                      ></Todo>
+                    );
+                  })}
+                </ul>
+              </div>
+
+              <div className="input">
+                <form>
+                  <label>
+                    Item Name:
+                    <input
+                      type="text"
+                      name="title"
+                      onChange={this.handleInputChange}
+                    />
+                  </label>
+                  <label>
+                    Description:
+                    <input
+                      type="text"
+                      name="description"
+                      onChange={this.handleInputChange}
+                    />
+                  </label>
+                </form>
+                <button onClick={this.addListItem}>Add Item </button>
+              </div>
+            </Route>
+          </Switch>
+        </div>
       </div>
     );
   }

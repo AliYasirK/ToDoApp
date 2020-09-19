@@ -2,9 +2,21 @@
   font-family: yo;
   src: url(https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300&display=swap)
 }
+.app{
+  width: 100%;
 
+}
 .App-header {
   margin: 0;
+  margin-top: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0;
+  margin-bottom: 120px;
+  border: 1px solid lightgrey;
+  padding-left: 20px;
+  
 }
 
 
@@ -12,13 +24,14 @@ body {
   display: flex;
   justify-content: center;
   /* background-image: url("https://i.pinimg.com/originals/b0/ff/1a/b0ff1a3520386aacce5cbad2986edc89.jpg"); */
-  background-color: #4e4f52;;
-  background-image: url("https://www.transparenttextures.com/patterns/diagmonds.png");
-}
+  background-color: white;
+
+  /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */}
 
 #root {
-  width: 70%;
-  max-width: 700px;
+  width: 100%;
+  margin: 30px;
+  margin-top: 0%;
 }
 
 
@@ -26,36 +39,24 @@ body {
   text-align: center;
 }
 
-.title {
-  color: white;
+ .title {
+  color:orange;
+  font-size: 50px;
   font-family: cursive;
-  margin-top: 0;
+  
 }
 
-.title_time {
-  color: white;
-  font-Family: cursive;
-}
 
 .title_sub {
-  font-size: 30px;
-  text-align: center;
-  color: white;
+
 }
 
 .title_section {
-  border-style: solid;
-  border-Width: 1px;
-  width: 100%;
-  height: 100%;
-  background-Image: url("https://i.pinimg.com/originals/47/c9/ba/47c9ba1fbde311e4646fdda4ea439bd2.jpg");
-  background-Size: 100%;
-  background-repeat: no-repeat;
-}  
+display: flex;
+}
 
 input {
-  display: flex;
-  justify-content: center;
+
 }
 
 .input_box {
@@ -75,22 +76,22 @@ input {
 }
 
 .topbar {
-  background-Color: lightblue;
-
-  display: flex
-}
+    text-align: right;
+    font-size: 20px;
+  }
 
 
 .avatar {
-  width: 150px;
+  width: 60px;
   margin: 0 auto;
   background-Color: white;
+  border-radius: 50%;
+
  
 }
 
 .avatar_parent {
-  display:flex;
- justify-Content: center;
+ 
 }
 
 
@@ -98,15 +99,37 @@ input {
 .name {
   display:flex;
   justify-Content: center;
-  color: white;
+  color: black;
 }
 
 .hero_box {
   border-Style: solid;
   border-Width: 1px;
   border-Color: lightblue;
-  width: 100%;
-  height: 100%; 
+  width: 60%;
+  height: 100%;
   background-Color: lightBlue;
   border-radius: 3px;
+}
+
+.link {
+  padding: 5px;
+  margin: 10px;
+  text-decoration: none;
+  background-color: hotpink;
+  border-radius: 17%;
+  margin-top: 0 auto;
+  height: 25px;
+}
+
+.Clock{
+text-align: center;
+}
+
+.Clock h2 {
+  color: blue;
+}
+
+.Clock h4{
+  color: orange;
 }
