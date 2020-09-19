@@ -5,8 +5,23 @@ import Clock from "./components/Clock.js";
 import Dashboard from "./components/Dashboard.js";
 import { Switch, Route } from "react-router-dom";
 import { Link } from "react-router-dom";
+import styled, { css } from 'styled-components'
 
 // import Dashboard from './components/Dashboard';
+const Button = styled.button`
+background: transparent;
+border-radius: 3px;
+border: 2px solid palevioletred;
+color: palevioletred;
+margin: 0 1em;
+padding: 0.25em 1em;
+
+  ${props => props.primary && css`
+      background: palevioletred;
+      color: white;
+    `}
+
+`;
 
 class App extends Component {
   constructor(props) {
@@ -92,10 +107,10 @@ class App extends Component {
         <nav className="App-header">
           <h1 className="title">ToDo App</h1>
           <div className="title_section">
-            <Link className="link" to="/todos">
+            <Link primary className="link" to="/todos">
               ToDo List
             </Link>
-            <Link className="link" to="/">
+            <Link primary className="link" to="/">
               Home Page
             </Link>
             <div className="avatar_parent">
@@ -156,7 +171,7 @@ class App extends Component {
                     />
                   </label>
                 </form>
-                <button onClick={this.addListItem}>Add Item </button>
+                <button  onClick={this.addListItem}>Add Item </button>
               </div>
             </Route>
           </Switch>
